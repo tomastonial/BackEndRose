@@ -13,10 +13,8 @@ public class Turma {
     @Column(name = "nome")
     private String nome;
 
-    @Column(name = "idCurso")
-    private int idCurso;
 
-    @Column(name = "quantidadeAluno")
+    @Column(name = "qtd_alunos")
     private int quantidadeAluno;
 
     public int getId() {
@@ -35,13 +33,6 @@ public class Turma {
         this.nome = nome;
     }
 
-    public int getIdCurso() {
-        return idCurso;
-    }
-
-    public void setIdCurso(int idCurso) {
-        this.idCurso = idCurso;
-    }
 
     public int getQuantidadeAluno() {
         return quantidadeAluno;

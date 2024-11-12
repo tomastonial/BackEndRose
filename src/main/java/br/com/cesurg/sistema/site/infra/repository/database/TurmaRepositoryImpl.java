@@ -16,12 +16,11 @@ public class TurmaRepositoryImpl implements TurmaRepository {
     @Transactional
     public void insert(Turma turma) {
         var query = """
-                INSERT INTO turma (nome, id_curso, quantidadeAluno)
-                VALUES (:nome, :idCurso, :quantidadeAluno);
+                INSERT INTO turma (nome, qtd_alunos)
+                VALUES (:nome, :quantidadeAluno);
                 """;
         entityManager.createNativeQuery(query, Turma.class)
                 .setParameter("nome", turma.getNome())
-                .setParameter("idCurso", turma.getIdCurso())
                 .setParameter("quantidadeAluno", turma.getQuantidadeAluno())
                 .executeUpdate();
     }
@@ -30,12 +29,11 @@ public class TurmaRepositoryImpl implements TurmaRepository {
     public void update(int id, Turma turma) {
         var query = """
                 UPDATE turma SET 
-                nome = :nome, id_curso = :idCurso, quantidadeAluno = :quantidadeAluno
+                nome = :nome, qtd_alunos = :quantidadeAluno
                 WHERE id = :id;
                 """;
         entityManager.createNativeQuery(query, Turma.class)
                 .setParameter("nome", turma.getNome())
-                .setParameter("idCurso", turma.getIdCurso())
                 .setParameter("id", id)
                 .setParameter("quantidadeAluno", turma.getQuantidadeAluno())
                 .executeUpdate();

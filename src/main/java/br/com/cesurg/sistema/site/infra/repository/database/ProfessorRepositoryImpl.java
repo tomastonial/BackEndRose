@@ -16,27 +16,22 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
     @Transactional
     public void insert(Professor professor) {
         var query = """
-                INSERT INTO professor (nome, departamento, especializacao)
-                VALUES (:nome, :departamento, :especializacao);
+                INSERT INTO professor (nome)
+                VALUES (:nome);
                 """;
         entityManager.createNativeQuery(query, Professor.class)
                 .setParameter("nome", professor.getNome())
-                .setParameter("departamento", professor.getDepartamento())
-                .setParameter("especializacao", professor.getEspecializacao())
                 .executeUpdate();
     }
 
     @Transactional
     public void update(int id, Professor professor) {
         var query = """
-                UPDATE professor SET 
-                nome = :nome, departamento = :departamento, especializacao = :especializacao
+                UPDATE professor SET nome = :nome
                 WHERE id = :id;
                 """;
         entityManager.createNativeQuery(query, Professor.class)
                 .setParameter("nome", professor.getNome())
-                .setParameter("departamento", professor.getDepartamento())
-                .setParameter("especializacao", professor.getEspecializacao())
                 .setParameter("id", id)
                 .executeUpdate();
     }

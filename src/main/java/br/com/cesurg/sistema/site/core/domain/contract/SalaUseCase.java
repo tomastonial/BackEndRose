@@ -2,6 +2,7 @@ package br.com.cesurg.sistema.site.core.domain.contract;
 
 import br.com.cesurg.sistema.site.core.domain.entity.Reserva;
 import br.com.cesurg.sistema.site.core.domain.entity.Sala;
+import br.com.cesurg.sistema.site.core.domain.entity.Turma;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface SalaUseCase {
     public List<Sala> fetch();
     public Sala get (int id);
     public void save (Reserva reserva);
+    public List<Turma> turmasCompativeis(int id);
 }

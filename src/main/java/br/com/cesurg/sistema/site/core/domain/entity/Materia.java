@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Materia {
+
     @Id
     @Column(name = "id")
     private int id;

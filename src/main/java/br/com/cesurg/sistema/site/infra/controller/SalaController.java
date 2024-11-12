@@ -33,7 +33,7 @@ public class SalaController {
         return salaUseCase.fetch();
     }
 
-    @PostMapping("/sala/{id}")
+    @PutMapping("/sala/{id}")
     public void update(@PathVariable int id, @RequestBody Sala sala) {
         salaUseCase.update(id, sala);
     }
@@ -58,4 +58,8 @@ public class SalaController {
         salaUseCase.save(reserva);
     }
 
+    @GetMapping("/sala/{id}/ver-compativel")
+    public List<Turma> turmasCompativeis(@PathVariable int id){
+        return salaUseCase.turmasCompativeis(id);
+    }
 }

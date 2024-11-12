@@ -24,17 +24,17 @@ public class TurmaController {
         return turmaUseCase.fetch();
     }
 
-    @PostMapping("/turma/{id}")
+    @PutMapping("/turma/{id}")
     public void update(@PathVariable int id, @RequestBody Turma turma) {
         turmaUseCase.update(id, turma);
     }
 
-    @DeleteMapping("/turma{id}")
+    @DeleteMapping("/turma/{id}")
     public void delete(@PathVariable int id) {
         turmaUseCase.delete(id);
     }
 
-    @GetMapping("/turma{id}")
+    @GetMapping("/turma/{id}")
     public void get(@PathVariable int id) {
         turmaUseCase.get(id);
     }

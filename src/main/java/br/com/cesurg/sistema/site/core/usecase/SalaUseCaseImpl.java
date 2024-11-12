@@ -4,6 +4,7 @@ import br.com.cesurg.sistema.site.core.domain.contract.SalaRepository;
 import br.com.cesurg.sistema.site.core.domain.contract.SalaUseCase;
 import br.com.cesurg.sistema.site.core.domain.entity.Reserva;
 import br.com.cesurg.sistema.site.core.domain.entity.Sala;
+import br.com.cesurg.sistema.site.core.domain.entity.Turma;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,5 +44,10 @@ public class SalaUseCaseImpl implements SalaUseCase {
     @Override
     public void save(Reserva reserva) {
         salaRepository.save(reserva);
+    }
+
+    @Override
+    public List<Turma> turmasCompativeis(int id) {
+        return salaRepository.turmasCompativeis(id);
     }
 }

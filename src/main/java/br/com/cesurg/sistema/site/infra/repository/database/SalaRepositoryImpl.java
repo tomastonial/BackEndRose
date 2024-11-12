@@ -3,6 +3,7 @@ package br.com.cesurg.sistema.site.infra.repository.database;
 import br.com.cesurg.sistema.site.core.domain.contract.SalaRepository;
 import br.com.cesurg.sistema.site.core.domain.entity.Reserva;
 import br.com.cesurg.sistema.site.core.domain.entity.Sala;
+import br.com.cesurg.sistema.site.core.domain.entity.Turma;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,27 @@ public class SalaRepositoryImpl implements SalaRepository {
                 .setParameter("idSala", reserva.getIdSala())
                 .setParameter("idProfessor", reserva.getIdProfessor())
                 .executeUpdate();
+    }
+
+    @Override
+    public List<Turma> turmasCompativeis(int id) {
+        var querySala = """
+                SELECT capacidade FROM sala WHERE id = :id;
+                """;
+
+        Integer capacidadeSala = (Integer) entityManager.createNativeQuery(querySala)
+                .setParameter("id", id)
+                .getSingleResult();
+
+        System.out.println(capacidadeSala);
+
+        var query = """
+                SELECT * FROM turma WHERE qtd_alunos <= :capacidade
+                """;
+
+        return entityManager.createNativeQuery(query, Turma.class)
+                .setParameter("capacidade", capacidadeSala)
+                .getResultList();
     }
 
 

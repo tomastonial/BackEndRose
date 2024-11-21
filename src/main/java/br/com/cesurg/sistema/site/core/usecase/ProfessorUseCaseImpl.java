@@ -1,7 +1,8 @@
 package br.com.cesurg.sistema.site.core.usecase;
 
-import br.com.cesurg.sistema.site.core.domain.contract.ProfessorRepository;
-import br.com.cesurg.sistema.site.core.domain.contract.ProfessorUseCase;
+import br.com.cesurg.sistema.site.core.domain.contract.Professor.ProfessorRepository;
+import br.com.cesurg.sistema.site.core.domain.contract.Professor.ProfessorUseCase;
+import br.com.cesurg.sistema.site.core.domain.entity.Materia;
 import br.com.cesurg.sistema.site.core.domain.entity.Professor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,5 +36,10 @@ public class ProfessorUseCaseImpl implements ProfessorUseCase {
     @Override
     public Professor get(int id) {
         return professorRepository.get(id);
+    }
+
+    @Override
+    public List<Materia> materiasCompativeis(int id) {
+        return professorRepository.materiasCompativeis(id);
     }
 }

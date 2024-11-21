@@ -1,5 +1,6 @@
 package br.com.cesurg.sistema.site.infra.repository.database;
-import br.com.cesurg.sistema.site.core.domain.contract.TurmaRepository;
+import br.com.cesurg.sistema.site.core.domain.contract.Turma.TurmaRepository;
+import br.com.cesurg.sistema.site.core.domain.entity.Professor;
 import br.com.cesurg.sistema.site.core.domain.entity.Turma;
 import org.springframework.stereotype.Repository;
 import java.util.List;
@@ -55,5 +56,19 @@ public class TurmaRepositoryImpl implements TurmaRepository {
         return (Turma) entityManager.createNativeQuery(query, Turma.class)
                 .setParameter("id", id)
                 .getSingleResult();
+    }
+
+    @Override
+    public List<Professor> professoresCompativeis(int id) {
+        var query = """
+                SELECT p.* 
+                FROM professor p
+                JOIN turma_professor tp ON tp.id_professor = p.id
+                WHERE tp.id_turma = :idTurma;
+                """;
+
+        return entityManager.createNativeQuery(query, Professor.class)
+                .setParameter("idTurma", id)
+                .getResultList();
     }
 }

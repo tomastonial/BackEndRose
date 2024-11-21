@@ -1,6 +1,6 @@
 package br.com.cesurg.sistema.site.infra.repository.database;
 
-import br.com.cesurg.sistema.site.core.domain.contract.MateriaRepository;
+import br.com.cesurg.sistema.site.core.domain.contract.Materia.MateriaRepository;
 import br.com.cesurg.sistema.site.core.domain.entity.Materia;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -34,6 +34,18 @@ public class MateriaRepositoryImpl implements MateriaRepository {
         entityManager.createNativeQuery(query, Materia.class)
                 .setParameter("nome", materia.getNome())
                 .setParameter("id_professor", materia.getId_professor())
+                .executeUpdate();
+    }
+
+    @Transactional
+    @Override
+    public void deletar(int id) {
+        var query = """
+                DELETE FROM materia WHERE id = :id;
+                """;
+
+        entityManager.createNativeQuery(query)
+                .setParameter("id", id)
                 .executeUpdate();
     }
 }

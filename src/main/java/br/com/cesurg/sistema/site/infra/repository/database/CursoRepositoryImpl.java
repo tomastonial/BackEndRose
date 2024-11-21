@@ -1,5 +1,5 @@
 package br.com.cesurg.sistema.site.infra.repository.database;
-import br.com.cesurg.sistema.site.core.domain.contract.CursoRepository;
+import br.com.cesurg.sistema.site.core.domain.contract.Curso.CursoRepository;
 import br.com.cesurg.sistema.site.core.domain.entity.Curso;
 import org.springframework.stereotype.Repository;
 import java.util.List;

@@ -1,4 +1,4 @@
-package br.com.cesurg.sistema.site.core.domain.contract;
+package br.com.cesurg.sistema.site.core.domain.contract.Sala;
 
 import br.com.cesurg.sistema.site.core.domain.entity.Reserva;
 import br.com.cesurg.sistema.site.core.domain.entity.Sala;
@@ -6,7 +6,7 @@ import br.com.cesurg.sistema.site.core.domain.entity.Turma;
 
 import java.util.List;
 
-public interface SalaUseCase {
+public interface SalaRepository {
     public void insert (Sala sala);
     public void update (int id, Sala sala);
     public void delete (int id);

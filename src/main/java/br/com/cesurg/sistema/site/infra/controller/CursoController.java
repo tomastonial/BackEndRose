@@ -1,13 +1,13 @@
 package br.com.cesurg.sistema.site.infra.controller;
 
-import br.com.cesurg.sistema.site.core.domain.contract.CursoUseCase;
+import br.com.cesurg.sistema.site.core.domain.contract.Curso.CursoUseCase;
 import br.com.cesurg.sistema.site.core.domain.entity.Curso;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 public class CursoController {
 

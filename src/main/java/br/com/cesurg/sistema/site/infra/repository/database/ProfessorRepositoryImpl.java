@@ -1,5 +1,7 @@
 package br.com.cesurg.sistema.site.infra.repository.database;
-import br.com.cesurg.sistema.site.core.domain.contract.ProfessorRepository;
+import br.com.cesurg.sistema.site.core.domain.contract.Professor.ProfessorRepository;
+import br.com.cesurg.sistema.site.core.dto.ProfessorOutputMaterias;
+import br.com.cesurg.sistema.site.core.domain.entity.Materia;
 import br.com.cesurg.sistema.site.core.domain.entity.Professor;
 import org.springframework.stereotype.Repository;
 import java.util.List;
@@ -52,5 +54,22 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         return (Professor) entityManager.createNativeQuery(query, Professor.class)
                 .setParameter("id", id)
                 .getSingleResult();
+    }
+
+    @Override
+    public List<Materia> materiasCompativeis(int id) {
+        var query = """
+                SELECT 
+                m.id, 
+                p.nome as nome_professor, 
+                m.nome as nome_materia 
+                FROM materia m 
+                INNER JOIN professor p ON p.id = m.id_professor
+                WHERE id_professor = :id;
+                """;
+
+        return entityManager.createNativeQuery(query, ProfessorOutputMaterias.class)
+                .setParameter("id",id)
+                .getResultList();
     }
 }

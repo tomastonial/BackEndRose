@@ -1,7 +1,7 @@
 package br.com.cesurg.sistema.site.core.usecase;
 
-import br.com.cesurg.sistema.site.core.domain.contract.SalaRepository;
-import br.com.cesurg.sistema.site.core.domain.contract.SalaUseCase;
+import br.com.cesurg.sistema.site.core.domain.contract.Sala.SalaRepository;
+import br.com.cesurg.sistema.site.core.domain.contract.Sala.SalaUseCase;
 import br.com.cesurg.sistema.site.core.domain.entity.Reserva;
 import br.com.cesurg.sistema.site.core.domain.entity.Sala;
 import br.com.cesurg.sistema.site.core.domain.entity.Turma;

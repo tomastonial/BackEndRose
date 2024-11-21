@@ -1,7 +1,8 @@
 package br.com.cesurg.sistema.site.core.usecase;
 
-import br.com.cesurg.sistema.site.core.domain.contract.TurmaRepository;
-import br.com.cesurg.sistema.site.core.domain.contract.TurmaUseCase;
+import br.com.cesurg.sistema.site.core.domain.contract.Turma.TurmaRepository;
+import br.com.cesurg.sistema.site.core.domain.contract.Turma.TurmaUseCase;
+import br.com.cesurg.sistema.site.core.domain.entity.Professor;
 import br.com.cesurg.sistema.site.core.domain.entity.Turma;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,10 @@ public class TurmaUseCaseImpl implements TurmaUseCase {
     @Override
     public Turma get(int id) {
         return turmaRepository.get(id);
+    }
+
+    @Override
+    public List<Professor> professoresCompativeis(int id) {
+        return turmaRepository.professoresCompativeis(id);
     }
 }

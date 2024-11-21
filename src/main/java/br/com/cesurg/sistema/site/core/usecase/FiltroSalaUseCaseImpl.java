@@ -2,7 +2,7 @@ package br.com.cesurg.sistema.site.core.usecase;
 
 import br.com.cesurg.sistema.site.core.domain.entity.Sala;
 import br.com.cesurg.sistema.site.core.domain.entity.Turma;
-import br.com.cesurg.sistema.site.core.domain.contract.SalaUseCase;
+import br.com.cesurg.sistema.site.core.domain.contract.Sala.SalaUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

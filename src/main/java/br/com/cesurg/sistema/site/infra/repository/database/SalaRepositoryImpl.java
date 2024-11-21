@@ -1,6 +1,6 @@
 package br.com.cesurg.sistema.site.infra.repository.database;
 
-import br.com.cesurg.sistema.site.core.domain.contract.SalaRepository;
+import br.com.cesurg.sistema.site.core.domain.contract.Sala.SalaRepository;
 import br.com.cesurg.sistema.site.core.domain.entity.Reserva;
 import br.com.cesurg.sistema.site.core.domain.entity.Sala;
 import br.com.cesurg.sistema.site.core.domain.entity.Turma;
@@ -70,9 +70,9 @@ public class SalaRepositoryImpl implements SalaRepository {
                 VALUES (:idTurma, :idSala, :idProfessor);
                 """;
         entityManager.createNativeQuery(query)
-                .setParameter("idTurma", reserva.getIdTurma())
-                .setParameter("idSala", reserva.getIdSala())
-                .setParameter("idProfessor", reserva.getIdProfessor())
+                .setParameter("idTurma", reserva.getId_turma())
+                .setParameter("idSala", reserva.getId_sala())
+                .setParameter("idProfessor", reserva.getId_professor())
                 .executeUpdate();
     }
 
@@ -85,8 +85,6 @@ public class SalaRepositoryImpl implements SalaRepository {
         Integer capacidadeSala = (Integer) entityManager.createNativeQuery(querySala)
                 .setParameter("id", id)
                 .getSingleResult();
-
-        System.out.println(capacidadeSala);
 
         var query = """
                 SELECT * FROM turma WHERE qtd_alunos <= :capacidade

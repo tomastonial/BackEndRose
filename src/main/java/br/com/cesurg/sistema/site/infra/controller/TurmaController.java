@@ -1,13 +1,14 @@
 package br.com.cesurg.sistema.site.infra.controller;
 
-import br.com.cesurg.sistema.site.core.domain.contract.TurmaUseCase;
+import br.com.cesurg.sistema.site.core.domain.contract.Turma.TurmaUseCase;
+import br.com.cesurg.sistema.site.core.domain.entity.Professor;
 import br.com.cesurg.sistema.site.core.domain.entity.Turma;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 public class TurmaController {
 
@@ -37,5 +38,10 @@ public class TurmaController {
     @GetMapping("/turma/{id}")
     public void get(@PathVariable int id) {
         turmaUseCase.get(id);
+    }
+
+    @GetMapping("/turma/{id}/professor-compativel")
+    public List<Professor> professorCompativel(@PathVariable int id){
+        return turmaUseCase.professoresCompativeis(id);
     }
 }

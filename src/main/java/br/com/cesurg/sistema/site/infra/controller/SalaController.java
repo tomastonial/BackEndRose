@@ -1,6 +1,6 @@
 package br.com.cesurg.sistema.site.infra.controller;
 
-import br.com.cesurg.sistema.site.core.domain.contract.SalaUseCase;
+import br.com.cesurg.sistema.site.core.domain.contract.Sala.SalaUseCase;
 import br.com.cesurg.sistema.site.core.domain.entity.Reserva;
 import br.com.cesurg.sistema.site.core.domain.entity.Sala;
 import br.com.cesurg.sistema.site.core.domain.entity.Turma;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 public class SalaController {
 

@@ -1,7 +1,7 @@
 package br.com.cesurg.sistema.site.core.usecase;
 
-import br.com.cesurg.sistema.site.core.domain.contract.CursoRepository;
-import br.com.cesurg.sistema.site.core.domain.contract.CursoUseCase;
+import br.com.cesurg.sistema.site.core.domain.contract.Curso.CursoRepository;
+import br.com.cesurg.sistema.site.core.domain.contract.Curso.CursoUseCase;
 import br.com.cesurg.sistema.site.core.domain.entity.Curso;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
